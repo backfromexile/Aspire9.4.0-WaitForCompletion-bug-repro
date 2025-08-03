@@ -6,6 +6,8 @@ To mitigate this bug we added a `try`-`catch`-block to our runner that exits wit
 
 However, after adding YARP we found that the `WaitForCompletion` is completely ignore if YARP is added as the parent of the resource that is supposed to wait for completion.
 
+We were also able to reproduce the bug with another container resource (scalar) so this is probably related to all container resources and not just exclusively these two.
+
 # Reproduction
 The project as is runs as expected.  
 Set `Aspire:YarpAsParent` to true and the web API will not wait for the completion of the runner, it will immediately be started.
